@@ -28,7 +28,17 @@ public class AppTest
     public void tearDown() throws Exception {
         
     }
-
+    @Test
+    public void teskeliling_pakefile() {
+        for (String isi : readfile("DBkeliling.csv")) {
+            String [] data = isi.split(";");
+            String panjang = data[0];
+            String lebar = data[1];
+            String tinggi = data[2];
+            String hasil = data[3];
+            assertEquals(Integer.parseInt(hasil), keliling.keliling(Integer.parseInt(panjang) , Integer.parseInt(lebar), Integer.parseInt(tinggi)),0.0);
+        }
+    }
     @Test
     public void teskeliling()
     {
@@ -50,6 +60,17 @@ public class AppTest
         assertEquals(0, keliling.keliling(0,0,0), 0.0);
     }
     //========================================================
+    @Test
+    public void tesvolume_pakefile() {
+        for (String isi : readfile("DBvolume.csv")) {
+            String [] data = isi.split(";");
+            String panjang = data[0];
+            String lebar = data[1];
+            String tinggi = data[2];
+            String hasil = data[3];
+            assertEquals(Integer.parseInt(hasil), keliling.keliling(Integer.parseInt(panjang) , Integer.parseInt(lebar), Integer.parseInt(tinggi)),0.0);
+        }
+    }
     @Test
     public void tesvolume()
     {
@@ -75,6 +96,15 @@ public class AppTest
 
 
     //========================================================
+    @Test
+    public void tessuhu_pakefile() {
+        for (String isi : readfile("DBfaren.csv")) {
+            String [] data = isi.split(";");
+            String f = data[0];
+            String c = data[1];
+            assertEquals(Integer.parseInt(c),Integer.parseInt(f),0.0);
+        }
+    }
     @Test
     public void tessuhu()
     {
