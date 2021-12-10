@@ -5,14 +5,17 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class AppTest 
 {
     keliling_kolam keliling  ;
     volume_kolam volume ;
     suhu faren ;
-
+    Scanner baca;
     @Before
     public void setUp() throws Exception {
         keliling = new keliling_kolam();
@@ -76,5 +79,38 @@ public class AppTest
     public void tessuhu()
     {
         assertEquals(-5, faren.faren(23), 0.0);
+    }
+    /*@Test
+    public void tessuhu_bukananga()
+    {
+        assertEquals(-5, faren.faren("a"), 0.0);
+    }*/
+    @Test
+    public void tessuhu_angkanegatif()
+    {
+        assertEquals(-5, faren.faren(23), 0.0);
+    }
+    @Test
+    public void tessuhu_nullangka()
+    {
+        assertEquals(0, faren.faren(0), 0.0);
+    }
+
+//========================================================
+
+    public List <String> readfile(String namefile) {
+        List <String> temp = new  ArrayList<String>();
+
+        try {
+            InputStream myfile = getClass().getClassLoader().getResourceAsStream(namefile);
+            baca = new Scanner(myfile);
+            while (baca.hasNextLine()) {
+                temp.add(baca.nextLine());
+            }
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+
+        return temp; 
     }
 }
